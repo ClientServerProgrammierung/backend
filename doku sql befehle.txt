@@ -1,0 +1,19 @@
+create table fahrrad (rahmennummer varchar not null primary key, marke varchar not null, model varchar not null);
+
+create sequence benutzer_id_seq;
+
+create table benutzer (id int not null primary key default nextval('benutzer_id_seq'), vorname varchar not null, nachname varchar not null, email varchar not null, geburtstdatum date not null, adresse varchar not null);
+
+alter sequence benutzer_id_seq owned by benutzer.id;
+
+create sequence kosten_arten_id_seq;
+
+create table kosten_arten (id int not null primary key default nextval('kosten_arten_id_seq'), beschreibung varchar not null);
+
+alter sequence kosten_arten_id_seq owned by kosten_arten.id;
+
+create sequence kosten_id_seq;
+
+create table kosten (id int not null primary key default nextval('kosten_id_seq'), fahrradnummer varchar not null, hoehe float not null, datum date not null, kosten_art int not null, benutzer int);
+
+alter sequence kosten_id_seq owned by kosten.id;
