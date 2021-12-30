@@ -14,7 +14,7 @@
 	<div class="topnav">
 		<a href="./home">Home</a> <a href="./fahrradAuswahl">Fahrrad
 			Auswahl</a> <a href="#contact">Contact</a> <a href="#about">About</a> <a
-			href="./loginRegister" class="active">Login/Register</a>
+			href="./login" class="active">Login</a>
 	</div>
 
 	<div class="wrapper">
@@ -26,8 +26,10 @@
 			<div class="slide-controls">
 				<input type="radio" name="slide" id="login" checked> <input
 					type="radio" name="slide" id="signup"> <label for="login"
-					class="slide login">Login</label> <label for="signup"
-					class="slide signup">Signup</label>
+					class="slide login">Login</label> 
+					
+					<!-- <label for="signup"
+					class="slide signup">Signup</label>-->
 				<div class="slider-tab"></div>
 			</div>
 			<div class="form-inner">
@@ -45,11 +47,11 @@
 						<div class="btn-layer"></div>
 						<input type="submit" value="Login">
 					</div>
-					<div class="signup-link">
+					<!-- <div class="signup-link">
 						Not a member? <a href="">Signup now</a>
-					</div>
+					</div> -->
 				</form>
-				<form action="#" class="signup">
+				<!-- <form action="#" class="signup">
 					<div class="field">
 						<input type="text" placeholder="Email Address" required>
 					</div>
@@ -63,7 +65,7 @@
 						<div class="btn-layer"></div>
 						<input type="submit" value="Signup">
 					</div>
-				</form>
+				</form> -->
 			</div>
 		</div>
 	</div>
@@ -71,7 +73,7 @@
          const loginText = document.querySelector(".title-text .login");
          const loginForm = document.querySelector("form.login");
          const loginBtn = document.querySelector("label.login");
-         const signupBtn = document.querySelector("label.signup");
+         /* const signupBtn = document.querySelector("label.signup");
          const signupLink = document.querySelector("form .signup-link a");
          signupBtn.onclick = (()=>{
            loginForm.style.marginLeft = "-50%";
@@ -84,7 +86,7 @@
          signupLink.onclick = (()=>{
            signupBtn.click();
            return false;
-         });
+         }); */
       </script>
 </body>
 </html>
