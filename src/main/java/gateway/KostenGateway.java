@@ -32,7 +32,7 @@ public class KostenGateway extends Gateway {
 		manager.getTransaction().commit();
 	}
 	
-	public void deleteFahrrad(Kosten ... kosten) {
+	public void deleteKosten(Kosten ... kosten) {
 		for (Kosten k : kosten) {
 			manager.remove(k);
 		}
