@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
-
 /**
  * The persistent class for the fahrrad database table.
  * 
@@ -18,7 +17,6 @@ public class Fahrrad implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String rahmennummer;
 
 	private String marke;

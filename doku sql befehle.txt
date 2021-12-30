@@ -17,3 +17,5 @@ create sequence kosten_id_seq;
 create table kosten (id int not null primary key default nextval('kosten_id_seq'), fahrradnummer varchar not null, hoehe float not null, datum date not null, kosten_art int not null, benutzer int);
 
 alter sequence kosten_id_seq owned by kosten.id;
+
+alter table kosten add column dauer int;

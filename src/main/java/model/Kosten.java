@@ -27,6 +27,8 @@ public class Kosten implements Serializable {
 	private String fahrradnummer;
 
 	private double hoehe;
+	
+	private int dauer;// in Tagen
 
 	@Column(name="kosten_art")
 	private Integer kostenArt;
@@ -80,6 +82,14 @@ public class Kosten implements Serializable {
 
 	public void setKostenArt(Integer kostenArt) {
 		this.kostenArt = kostenArt;
+	}
+	
+	public Integer getDauer() {
+		return this.dauer;
+	}
+
+	public void setDauer(Integer dauer) {
+		this.dauer = dauer;
 	}
 
 }
