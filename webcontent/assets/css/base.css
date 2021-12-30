@@ -1,0 +1,30 @@
+@charset "ISO-8859-1";
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+body{
+	background-color: #3a3a3a;
+}
+
+body {
+	/* The image used: https://images.unsplash.com/photo-1640816810686-bf3bf9b5c35e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=marc-wieland-lH3zFaBhT_Q-unsplash.jpg*/
+	background-image: url("../img/Stadt.jpg");
+	/* Full height */
+	height: 100vh;
+	width: 100%;
+	/* Center and scale the image nicely */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+.mg-bot-10{
+	margin-bottom: 10px;
+}
