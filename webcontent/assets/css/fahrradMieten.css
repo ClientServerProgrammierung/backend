@@ -1,0 +1,56 @@
+@charset "ISO-8859-1";
+
+.mietForm {
+	border: 0.5px solid gray;
+	padding: 20px;
+	margin: auto;
+	margin-top: 30px;
+	color: #606060;
+	border-radius: 5px;
+	background-color: white;
+	border-radius: 5px;
+	max-width: 500px;
+	justify-content: center;
+	align-items: center;
+}
+
+input.readonly {
+	background-color: #c0c0c0;
+}
+
+input {
+	max-width: 300px;
+	width: 250px;
+	border-radius: 5px;
+	border: 0.5px solid gray;
+	border-radius: 5px;
+	padding: 6px;
+	text-indent: 0.5em;
+	border-radius: 5px;
+}
+
+td label {
+	margin-right: 20px;
+}
+
+.td-miet-btn {
+	text-align: right;
+}
+
+.miet-btn {
+	margin-top: 10px;
+	background-color: #ff8a80;
+	border-radius: 5px;
+	transition: all 0.4s ease;
+	border: none;
+	color: #fff;
+	padding: 5px;
+	border-radius: 5px;
+	font-size: 14px;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.miet-btn:hover {
+	background-color: #ff6464;
+}

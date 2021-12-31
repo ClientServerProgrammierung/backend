@@ -7,4 +7,31 @@
 	max-width: 800px;
 	border-radius: 5px;
 	border: 0.5px solid gray;
+	display: flex;
+}
+
+.left-flex {
+	flex-grow: 1
+}
+
+.right-flex {
+	display: flex;
+	align-items: center;
+}
+
+.mietenBTN {
+	background-color: #ff8a80;
+	border-radius: 5px;
+	transition: all 0.4s ease;
+	border: none;
+	color: #fff;
+	padding: 5px;
+	border-radius: 5px;
+	font-size: 14px;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.mietenBTN:hover {
+	background-color: #ff6464;
 }
