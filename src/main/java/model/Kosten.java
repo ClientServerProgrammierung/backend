@@ -15,8 +15,8 @@ public class Kosten implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="KOSTEN_ID_GENERATOR", sequenceName="KOSTEN_ID_SEQ")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="KOSTEN_ID_GENERATOR")
+	//@SequenceGenerator(name="KOSTEN_ID_GENERATOR", sequenceName="KOSTEN_ID_SEQ")
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="KOSTEN_ID_GENERATOR")
 	private Integer id;
 
 	private Integer benutzer;

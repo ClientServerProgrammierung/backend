@@ -14,15 +14,15 @@ public class JsfTest {
 
 		FahrradGateway gateway = new FahrradGateway();
 		Fahrrad fahrrad = new Fahrrad();
-		fahrrad.setRahmennummer("2");
-		fahrrad.setMarke("fadsökljasdjlköf");
-		fahrrad.setModel("asdfjlköljködfsa");
+		fahrrad.setRahmennummer("1293509");
+		fahrrad.setMarke("Serious");
+		fahrrad.setModel("Rockville 27.5\" schwarz/grau");
 		
 		gateway.insertFahrrad(fahrrad);
 		Fahrrad f = new Fahrrad();
-		f.setRahmennummer("3");
-		f.setMarke("fadsökljasdjlköf");
-		f.setModel("asdfjlköljködfsa");
+		f.setRahmennummer("1534045");
+		f.setMarke("GIANT");
+		f.setModel("Talon 4 schwarz");
 		
 		gateway.insertFahrrad(fahrrad, f);
 		
