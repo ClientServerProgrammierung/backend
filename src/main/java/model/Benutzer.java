@@ -23,6 +23,7 @@ public class Benutzer implements Serializable {
 	private String adresse;
 
 	private String email;
+	private String password;
 
 	@Temporal(TemporalType.DATE)
 	private Date geburtstdatum;
@@ -80,6 +81,14 @@ public class Benutzer implements Serializable {
 
 	public void setVorname(String vorname) {
 		this.vorname = vorname;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }
