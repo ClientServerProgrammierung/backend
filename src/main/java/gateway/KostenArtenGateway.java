@@ -3,7 +3,6 @@ package gateway;
 import java.util.List;
 import javax.persistence.TypedQuery;
 
-import model.Kosten;
 import model.KostenArten;
 
 public class KostenArtenGateway extends Gateway {
