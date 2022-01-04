@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import gateway.FahrradGateway;
 import gateway.KostenGateway;
+import gateway.KostenArtenGateway;
 import model.Fahrrad;
 import model.Kosten;
 import model.KostenArten;
@@ -35,28 +36,30 @@ public class VendorFahrradAnlegen extends HttpServlet {
 	    
 	    // Models
 	    Fahrrad fahrrad = new Fahrrad(rahmennummer, marke, model);
+	    
 	    Kosten aPreis = new Kosten();
 	    Kosten mPreis = new Kosten();
 	    
 	    KostenArten artAPreis = new KostenArten();
 	    KostenArten artMPreis = new KostenArten();
 	    
-	    
 	    // set Anschaffungspreis - //TODO -- kosten art ist momentan als int implementiert - soll das noch geändert werden
 	    aPreis.setHoehe(anschaffungspreis);
-	    aPreis.setKostenArt(1);
+	    aPreis.setKostenArt(artAPreis.getId());
 	    
 	    // set Mietpreis
         mPreis.setHoehe(mietpreis);
-        mPreis.setKostenArt(1);
+        mPreis.setKostenArt(artMPreis.getId());
 
 	    // Gateways
 	    FahrradGateway fahrradGateway = new FahrradGateway();
 	    KostenGateway kostenGateway = new KostenGateway();
+	    KostenArtenGateway kostenArtenGateway = new KostenArtenGateway();
 	    
 	    // Daten in Datenbank einfügen
 	    fahrradGateway.insertFahrrad(fahrrad);
 	    kostenGateway.insertKosten(aPreis, mPreis);
+	    kostenArtenGateway.insertKostenArten(artAPreis, artMPreis);
 	    
 	    
 	}
