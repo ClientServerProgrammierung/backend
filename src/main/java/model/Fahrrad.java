@@ -32,6 +32,7 @@ public class Fahrrad implements Serializable {
 		this.model = model;
 		
 	}
+	        
 	public String getRahmennummer() {
 		return this.rahmennummer;
 	}
