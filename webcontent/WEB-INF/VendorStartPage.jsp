@@ -12,9 +12,14 @@
 <body class="bg">
 	<div class="topnav">
 		<a href="./vendorhome" class="active">Home</a> &nbsp;&nbsp;
-		<a href="">Fahrrad suchen</a> &nbsp;&nbsp;
-		<a href="">Fahrrad bearbeiten</a> &nbsp;&nbsp;
-		<a href="">Fahrrad anlegen</a> &nbsp;&nbsp;
+		<a href="./vendorbikelist">Fahrrad Liste</a> &nbsp;&nbsp;
+		<a href="./vendorcreatebike">Fahrrad anlegen</a> &nbsp;&nbsp;
 	</div>
+	
+	<article>
+
+	<center>Verkäufer Control Panel</center>
+
+	</article>
 </body>
 </html>
