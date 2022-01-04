@@ -3,10 +3,12 @@ package gateway;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
 import model.Benutzer;
+import model.KostenArten;
 
 public class BenutzerGateway extends Gateway {
 
@@ -17,15 +19,25 @@ public class BenutzerGateway extends Gateway {
 		return liste;
 	}
 
-	public List<Benutzer> getBenutzerByEmail(String email) {
+	public Benutzer getBenutzerByEmail(String email) {
 		try {
 			TypedQuery<Benutzer> query = manager.createQuery("SELECT f FROM Benutzer f WHERE f.email = ?1",
 					Benutzer.class);
 			query.setParameter(1, email);
-			return query.getResultList();
+			return query.getSingleResult();
 		} catch (PersistenceException ex) {
-			return new ArrayList<Benutzer>();
+			return new Benutzer();
 		}
+	}
+
+	public Benutzer getBenutzerById(Integer id) {
+
+		Benutzer benutzer = manager.find(Benutzer.class, id);
+		if (benutzer == null) {
+			throw new EntityNotFoundException("Can't find Benutzer for ID " + id);
+		}
+		return benutzer;
+
 	}
 
 	public void deleteBenutzer(Benutzer... benutzer) {
@@ -49,6 +61,12 @@ public class BenutzerGateway extends Gateway {
 		} catch (PersistenceException ex) {
 			System.out.println(ex);
 		}
+	}
+
+	public void updateBenutzer(Benutzer benutzer) {
+		manager.getTransaction().begin();
+		manager.merge(benutzer);
+		manager.getTransaction().commit();
 	}
 
 }

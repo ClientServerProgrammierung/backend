@@ -1,15 +1,21 @@
 package Controller;
 
+import model.Benutzer;
 import model.Fahrrad;
 import model.KostenArten;
 
+import java.time.LocalTime;
 import java.util.List;
+import java.util.Date;
+
+import gateway.BenutzerGateway;
 import gateway.FahrradGateway;
 import gateway.KostenArtenGateway;
 
 
 public class JsfTest {
 	//TODO: delete before deadline
+	@SuppressWarnings("deprecation")
 	public static void main (String[] args) {
 		
 		
@@ -32,9 +38,28 @@ public class JsfTest {
 //		List<Fahrrad> list = gateway.getAll();
 //		list.forEach(ff -> System.out.println(ff.getModel()));
 		
-		KostenArtenGateway gateway = new KostenArtenGateway();
-		List<KostenArten> list =gateway.getAllKostenArten();
-		list.forEach(ff -> System.out.println(ff.getBeschreibung()));
+
+//		BenutzerGateway gateway = new BenutzerGateway();
+//		Benutzer benutzer = new Benutzer();
+//		benutzer.setVorname("ib");
+//		benutzer.setNachname("sc");
+//		benutzer.setEmail("ib@gm.de");
+//		benutzer.setGeburtstdatum(new Date(1992, 1,1));
+//		benutzer.setAdresse("ib");
+//		gateway.insertBenutzer(benutzer);
+//		List<Benutzer> list =gateway.getAllBenutzer();
+//		list.forEach(ff -> System.out.println(ff.getEmail()));
+		
+//		BenutzerGateway gateway = new BenutzerGateway();
+//		Benutzer benutzer = gateway.getBenutzerByEmail("ib@gm.de");
+//		benutzer.setVorname("bra");
+//		gateway.updateBenutzer(benutzer);
+//		List<Benutzer> list =gateway.getAllBenutzer();
+//		list.forEach(ff -> System.out.println(ff.getVorname()));
+		
+
+     
+
 		
 	}
 	
