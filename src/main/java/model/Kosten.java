@@ -2,6 +2,10 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import gateway.FahrradGateway;
+import gateway.KostenArtenGateway;
+
 import java.util.Date;
 
 
@@ -92,6 +96,21 @@ public class Kosten implements Serializable {
 
 	public void setDauer(Integer dauer) {
 		this.dauer = dauer;
+	}
+	
+	public KostenArten getKostenArtenObj() throws Exception {
+		/*
+		 * throws when foreign key constraint was not found
+		 * */
+		KostenArtenGateway gw = new KostenArtenGateway();
+		return gw.getById(this.getKostenArt());
+	}
+	
+	public Fahrrad getFahrradObj() throws Exception {
+		FahrradGateway gw = new FahrradGateway();
+		return gw.getFahrradByNummer(this.getFahrradnummer()).stream()
+				.findAny()
+				.orElseThrow(() -> new Exception("Not exactly 1 found."));
 	}
 
 }
