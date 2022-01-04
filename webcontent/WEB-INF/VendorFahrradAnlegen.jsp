@@ -31,7 +31,7 @@
 				</tr>	
 				<tr>
 					<td><label>Anschaffungspreis:</label></td>
-					<td><input type=number name="anschaffungspreis"  placeholder="Anschaffungspreis" required/></td>
+					<td><input type="number" name="anschaffungspreis"  placeholder="Anschaffungspreis" required/></td>
 				</tr>	
 				<tr>
 					<td><label>Mietpreis:</label></td>
