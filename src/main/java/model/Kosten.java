@@ -10,6 +10,7 @@ import java.util.Date;
  * 
  */
 @Entity
+@Table(name = "Kosten")
 @NamedQuery(name="Kosten.findAll", query="SELECT k FROM Kosten k")
 public class Kosten implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -17,6 +18,7 @@ public class Kosten implements Serializable {
 	@Id
 	//@SequenceGenerator(name="KOSTEN_ID_GENERATOR", sequenceName="KOSTEN_ID_SEQ")
 	//@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="KOSTEN_ID_GENERATOR")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	private Integer benutzer;

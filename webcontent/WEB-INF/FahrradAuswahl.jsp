@@ -20,6 +20,27 @@
 			href="./login">Login</a>
 
 	</div>
+	<%
+	if (request.getAttribute("mietenErfolgreich") != null) {
+	%>
+	<section>
+		<div class="mietenFeedback"
+			style="background-color: #d5ffd5; color: #005b00;">
+			<%=request.getAttribute("mietenErfolgreich")%>
+		</div>
+	</section>
+	<%
+	} else if (request.getAttribute("MietenFehlgeschlagen") != null) {
+	%>
+	<section>
+		<div class="mietenFeedback"
+			style="background-color: #fcdcda; color: #9d0000;">
+			<%=request.getAttribute("MietenFehlgeschlagen")%>
+		</div>
+	</section>
+	<%
+	}
+	%>
 
 	<section>
 		<%
@@ -42,8 +63,9 @@
 				<form action="./fahrradMieten" method="get">
 					<input type="hidden" name="marke" value=<%=fahrrad.getMarke()%>>
 					<input type="hidden" name="model" value=<%=fahrrad.getModel()%>>
-					<input type="hidden" name="rahmennummer" value=<%=fahrrad.getRahmennummer()%>>
-					<input class="mietenBTN" type="submit" value="Auswählen">
+					<input type="hidden" name="rahmennummer"
+						value=<%=fahrrad.getRahmennummer()%>> <input
+						class="mietenBTN" type="submit" value="Auswählen">
 				</form>
 
 			</div>

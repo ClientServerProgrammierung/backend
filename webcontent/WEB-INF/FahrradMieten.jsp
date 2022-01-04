@@ -47,9 +47,13 @@
 					<td><label>Vorname:</label></td>
 					<td><input type="text" name="vorname" required /></td>
 				</tr>
-					<tr>
+				<tr>
 					<td><label>Nachname:</label></td>
 					<td><input type="text" name="nachname" required /></td>
+				</tr>
+				<tr>
+					<td><label>Adresse (Straße & Hausnummer):</label></td>
+					<td><input type="text" name="adresse" required /></td>
 				</tr>
 				<tr>
 					<td><label>E-mail:</label></td>
@@ -62,7 +66,8 @@
 				</tr>
 				<tr>
 					<td></td>
-					<td class="td-miet-btn"><button class="miet-btn" type="submit">Fahrrad Mieten</button></td>
+					<td class="td-miet-btn"><button class="miet-btn" type="submit">Fahrrad
+							Mieten</button></td>
 				</tr>
 			</table>
 		</form>

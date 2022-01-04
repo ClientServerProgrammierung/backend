@@ -4,6 +4,8 @@ create sequence benutzer_id_seq;
 
 create table benutzer (id int not null primary key default nextval('benutzer_id_seq'), vorname varchar not null, nachname varchar not null, email varchar not null, geburtstdatum date not null, adresse varchar not null);
 
+alter table benutzer add column password varchar;
+
 alter sequence benutzer_id_seq owned by benutzer.id;
 
 create sequence kosten_arten_id_seq;

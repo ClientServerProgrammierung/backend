@@ -1,6 +1,8 @@
 package web;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -20,13 +22,21 @@ public class FahrradAuswahl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		
+		Date currentDate = new Date();
 		FahrradGateway gateway = new FahrradGateway();
 
 		List<Fahrrad> fahrradListe = gateway.getAll();
+		List<Fahrrad> fahrradListeVerfuegbar = new ArrayList<>();
 
-		request.setAttribute("fahrradListe", fahrradListe);
-		
+		for (Fahrrad fahrrad : fahrradListe) {
+			// Fahrräder die schon gemietet sind, werden nicht aufgelistet.
+			if (!gateway.fahrradIsGemietet(fahrrad.getRahmennummer(), currentDate)) {
+				fahrradListeVerfuegbar.add(fahrrad);
+			}
+		}
+
+		request.setAttribute("fahrradListe", fahrradListeVerfuegbar);
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/FahrradAuswahl.jsp");
 		dispatcher.forward(request, response);
 	}

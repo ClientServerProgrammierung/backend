@@ -1,25 +1,21 @@
 package gateway;
 
 import java.util.List;
-
-import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-
-import model.Fahrrad;
 import model.Kosten;
 
 public class KostenGateway extends Gateway {
 
 	public List<Kosten> getAll() {
-		TypedQuery<Kosten> query = manager.createQuery("SELECT k FROM kosten k", Kosten.class);
+		TypedQuery<Kosten> query = manager.createQuery("SELECT k FROM Kosten k", Kosten.class);
 		
 		List<Kosten> liste = query.getResultList();
 		return liste;
 	}
 
-	public List<Kosten> getKostenByRahmennummer(String rahmennummer) {
-		TypedQuery<Kosten> query = manager.createQuery("SELECT k FROM kosten k WHERE k.fahrradnummer= ?1", Kosten.class);
-		query.setParameter(1, rahmennummer);
+	public List<Kosten> getKostenByRahmennummer(String fahrradnummer) {
+		TypedQuery<Kosten> query = manager.createQuery("SELECT k FROM Kosten k WHERE k.fahrradnummer= ?1", Kosten.class);
+		query.setParameter(1, fahrradnummer);
 		
 		return query.getResultList();
 	}
