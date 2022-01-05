@@ -33,7 +33,6 @@ public class VendorFahrradAnlegen extends HttpServlet {
 	    String marke = request.getParameter("marke");
 	    String model = request.getParameter("model");
 	    double anschaffungspreis = Double.parseDouble(request.getParameter("anschaffungspreis"));
-	    double mietpreis = Double.parseDouble(request.getParameter("mietpreis"));
 	    
 	    // Models
 	    Fahrrad fahrrad = new Fahrrad(rahmennummer, marke, model);
@@ -44,35 +43,23 @@ public class VendorFahrradAnlegen extends HttpServlet {
         KostenArtenGateway kostenArtenGateway = new KostenArtenGateway();
 	    
 	    Kosten aPreis = new Kosten();
-	    Kosten mPreis = new Kosten();
 	    
 	    int kaufpreisId = 1;
-	    int mietId = 3;
 	    
 	    // Versuche Kostenartobjek aus Datenbank zu laden. Wenn nicht existiert erstelle
 	    // neues Kostenarten - Object und füge dies der Datenbank hinzu.
 	    KostenArten artAPreis;
-	    KostenArten artMPreis;
 	    
 	    try {
             artAPreis = kostenArtenGateway.getById(kaufpreisId);
         } catch (Exception e) {
             System.out.print(e);
             artAPreis = new KostenArten();
-            artAPreis.setId(mietId);
+            artAPreis.setId(kaufpreisId);
             artAPreis.setBeschreibung("Kauf");
             kostenArtenGateway.insertKostenArten(artAPreis);
         }
 	    
-       try {
-            artMPreis = kostenArtenGateway.getById(mietId);
-        } catch (Exception e) {
-            System.out.print(e);
-            artMPreis = new KostenArten();
-            artAPreis.setId(kaufpreisId);
-            artAPreis.setBeschreibung("Miete");
-            kostenArtenGateway.insertKostenArten(artMPreis);
-        }
 
 	     
 	    // set Anschaffungspreis - //TODO -- kosten art ist momentan als int implementiert - soll das noch geändert werden
@@ -81,15 +68,10 @@ public class VendorFahrradAnlegen extends HttpServlet {
 	    aPreis.setFahrradnummer(rahmennummer);
 	    aPreis.setDatum(new Date());
 	    
-	    // set Mietpreis
-        mPreis.setHoehe(mietpreis);
-        mPreis.setKostenArt(artMPreis.getId());
-        mPreis.setFahrradnummer(rahmennummer);
-        mPreis.setDatum(new Date());
 	    
 	    // Neues Fahrrad und Anschaffungskosten in Datenbank einfügen
 	    fahrradGateway.insertFahrrad(fahrrad);
-	    kostenGateway.insertKosten(aPreis, mPreis);
+	    kostenGateway.insertKosten(aPreis);
 	    
 	    
 	}

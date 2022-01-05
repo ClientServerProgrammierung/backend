@@ -53,7 +53,7 @@
 				<tr class="input-group input-group-sm mb-3">
 
 					<td><input type="text" class="form-control" name="marke"
-						size="50" placeholder="Marke" required
+						size="20" placeholder="Marke" required
 						aria-label="Sizing example input"
 						aria-describedby="inputGroup-sizing-sm" /></td>
 
@@ -62,7 +62,7 @@
 				<tr class="input-group input-group-sm mb-3">
 
 					<td><input type="text" class="form-control" name="model"
-						size="50" placeholder="Model" required
+						size="20" placeholder="Model" required
 						aria-label="Sizing example input"
 						aria-describedby="inputGroup-sizing-sm" /></td>
 
@@ -71,7 +71,7 @@
 				<tr class="input-group input-group-sm mb-3">
 
 					<td><input type="text" class="form-control"
-						name="rahmennummer" size="50" placeholder="Rahmennummer" required
+						name="rahmennummer" size="20" placeholder="Rahmennummer" required
 						aria-label="Sizing example input"
 						aria-describedby="inputGroup-sizing-sm" /></td>
 
@@ -82,15 +82,6 @@
 					<td><input type="number" class="form-control"
 						name="anschaffungspreis" size="50" placeholder="Anschaffungspreis"
 						required aria-label="Sizing example input"
-						aria-describedby="inputGroup-sizing-sm" /></td>
-
-				</tr>
-
-				<tr class="input-group input-group-sm mb-3">
-
-					<td><input type="number" class="form-control" name="mietpreis"
-						required size="50" placeholder="Mietpreis"
-						aria-label="Sizing example input"
 						aria-describedby="inputGroup-sizing-sm" /></td>
 
 				</tr>
