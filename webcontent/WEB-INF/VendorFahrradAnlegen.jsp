@@ -22,34 +22,6 @@
 			<hr>
 			<br>
 			<table>
-				<!-- --
-				<tr>
-					<td><label>Marke:</label></td>
-					<td><input type="text" name="marke" placeholder="Marke"
-						required /></td>
-				</tr>
-				<tr>
-					<td><label>Model:</label></td>
-					<td><input type="text" name="model" placeholder="Model"
-						required /></td>
-				</tr>
-				<tr>
-					<td><label>Rahmennummer:</label></td>
-					<td><input type="text" name="rahmennummer"
-						placeholder="Rahmennummer" required /></td>
-				</tr>
-				<tr>
-					<td><label>Anschaffungspreis:</label></td>
-					<td><input type="number" name="anschaffungspreis"
-						placeholder="Anschaffungspreis" required /></td>
-				</tr>
-				<tr>
-					<td><label>Mietpreis:</label></td>
-					<td><input type="number" name="mietpreis"
-						placeholder="Mietpreis" required /></td>
-				</tr>
- -->
-
 				<tr class="input-group input-group-sm mb-3">
 
 					<td><input type="text" class="form-control" name="marke"
@@ -83,7 +55,6 @@
 						name="anschaffungspreis" size="50" placeholder="Anschaffungspreis"
 						required aria-label="Sizing example input"
 						aria-describedby="inputGroup-sizing-sm" /></td>
-
 				</tr>
 				<tr>
 					<td>
