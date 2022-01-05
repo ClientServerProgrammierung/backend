@@ -20,6 +20,8 @@ public class KostenArten implements Serializable {
 	private Integer id;
 
 	private String beschreibung;
+	
+	private boolean isIncome;
 
 	public KostenArten() {
 	}
@@ -38,6 +40,14 @@ public class KostenArten implements Serializable {
 
 	public void setBeschreibung(String beschreibung) {
 		this.beschreibung = beschreibung;
+	}
+	
+	public boolean getIsIncome() {
+	    return this.isIncome;
+	}
+	
+	public void setIsIncome(boolean isIncome) {
+	    this.isIncome = isIncome;
 	}
 
 }
