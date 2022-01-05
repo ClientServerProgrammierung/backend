@@ -18,7 +18,6 @@
 	
 	<article>
 
-	<center>Verkäufer Control Panel</center>
 
 	</article>
 </body>
