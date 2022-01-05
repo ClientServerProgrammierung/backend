@@ -27,7 +27,6 @@ alter table kosten add column dauer int;
 INSERT INTO fahrrad VALUES ('43UA502', 'Pegasus', 'Krasses Model');
 
 
-alter table benutzer add column password String;
 
 insert into kosten_arten (beschreibung) values ('Kauf');
 
