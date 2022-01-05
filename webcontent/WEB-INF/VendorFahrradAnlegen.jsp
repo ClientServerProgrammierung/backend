@@ -15,6 +15,10 @@
 	crossorigin="anonymous">
 </head>
 <body>
+<div class="topnav">
+		<a href="./vendorhome" class="active">Home</a> &nbsp;&nbsp;
+		<a href="./vendorbikelist">Fahrrad Liste</a> &nbsp;&nbsp;
+	</div>
 
 	<div class="mietBox">
 		<form class="mietForm" action="./vendorcreatebike" method="POST">
