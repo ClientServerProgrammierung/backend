@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 
 import java.util.Date;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,8 +40,9 @@ public class FahrradMieten extends HttpServlet {
 		String adresse = request.getParameter("adresse");
 		BenutzerGateway benutzerGateway = new BenutzerGateway();
 		KostenGateway kostengateway = new KostenGateway();
+//		KostenArtenGateway kostenArtenGateway = new KostenArtenGateway();
 
-		// TODO:: check ob fahrrad schon gemietet wurde
+		// boolean ob fahrrad schon gemietet wurde
 		FahrradGateway fahrradGateway = new FahrradGateway();
 		boolean fahrradSchonGemietet = fahrradGateway.fahrradIsGemietet(rahmennummer, date);
 
@@ -53,20 +53,20 @@ public class FahrradMieten extends HttpServlet {
 		benutzer.setVorname(vorname);
 		benutzer.setAdresse(adresse);
 		benutzer.setGeburtstdatum(new Date());
-
 		benutzerGateway.insertBenutzer(benutzer);
-		List<Benutzer> benutzerList = benutzerGateway.getBenutzerByEmail(email);
+		Benutzer nutzer = benutzerGateway.getBenutzerByEmail(email);
 
-		System.out.println(benutzerList.isEmpty());
-		if (!fahrradSchonGemietet && !benutzerList.isEmpty()) {
+		System.out.println(nutzer);
+		if (!fahrradSchonGemietet && nutzer != null) {
 			// Fahrred wird gemietet
 			Kosten kosten = new Kosten();
 			kosten.setDatum(date);
-			kosten.setBenutzer(benutzerList.get(0).getId());
+			kosten.setBenutzer(nutzer.getId());
 			kosten.setDauer(dauer);
 			kosten.setFahrradnummer(rahmennummer);
-			// TODO:: Kostenart in Kosten hinzufügen
-			kosten.setKostenArt(0);
+//			KostenArten miete = kostenArtenGateway.getById(3);
+//			kosten.setKostenArt(miete.getId());
+			kosten.setKostenArt(3);
 			kosten.setHoehe(5 * dauer);
 			kostengateway.insertKosten(kosten);
 			SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -75,19 +75,13 @@ public class FahrradMieten extends HttpServlet {
 			System.out.println("Fahrrad gemietet !");
 			request.setAttribute("mietenErfolgreich",
 					"Fahrrad mit Rahmennummer: " + rahmennummer + " wurde Erfolgreich gemietet !");
-			// doGet(request, response);
 		} else {
 			// Fahrrad wird nicht gemietet
 			System.out.println("Fahrrad nicht gemietet !");
 			request.setAttribute("mietenFehlgeschlagen",
 					"Fahrrad mit Rahmennummer: " + rahmennummer + " konnte nich gemietet werden !");
-			// doGet(request, response);
 		}
-
-//		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/FahrradAuswahl.jsp");
-//		dispatcher.forward(request, response);
 		new FahrradAuswahl().doGet(request, response);
-
 	}
 
 }
