@@ -17,12 +17,16 @@ import gateway.LoginGateway;
 public class JsfTest {
 	//TODO: delete before deadline
 <<<<<<< HEAD
+<<<<<<< HEAD
 	@SuppressWarnings("deprecation")
 	public static void main (String[] args) {
 		
 =======
 	public static void main (String[] args) throws Exception {
 >>>>>>> 5fa830d (Add Update method for every gateway.)
+=======
+	public static void main (String[] args) throws Exception {
+>>>>>>> 8099fdd632ca4bd34788043aebd2d22254577d67
 		
 		/*
 
@@ -78,7 +82,10 @@ public class JsfTest {
 		Fahrrad fahrrad = gateway.getAll().get(0);
 		fahrrad.setMarke("asfd klhjfasd jhklasfd jklhfasd klöjfsad jhklöj klöasfd ");
 		gateway.update();
+<<<<<<< HEAD
 >>>>>>> 5fa830d (Add Update method for every gateway.)
+=======
+>>>>>>> 8099fdd632ca4bd34788043aebd2d22254577d67
 	}
 	
 }

@@ -44,26 +44,32 @@ public class VendorFahrradBearbeiten extends HttpServlet {
 		FahrradGateway fahrradGateway = new FahrradGateway();
 		boolean fahrradSchonGemietet = fahrradGateway.fahrradIsGemietet(rahmennummer, date);
 		
-		getBikeBalance(rahmennummer, kostengateway, true);
+		//request.setAttribute("kostenListe", getBikeBalance(rahmennummer, kostengateway, false));
 
 	
 		new VendorFahrradBearbeiten().doGet(request, response);
-
+	    // RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/VendorFahrradBearbeiten.jsp");
+        // dispatcher.forward(request, response);
 	}
 	
 	// returns all Costs or all Income depending on "isIncome"
-	protected List<Kosten> getBikeBalance(String rahmennummer, KostenGateway kostengateway, boolean isIncome){
-	    KostenArtenGateway kostenArtenGateway = new KostenArtenGateway();
-	    List<Kosten> allCosts = kostengateway.getKostenByRahmennummer(rahmennummer);
-	    List<Kosten> balance = new ArrayList<Kosten>();
-	    for (Kosten kostenpunkt : allCosts) {
-	          if(kostenArtenGateway.getById(kostenpunkt.getKostenArt()).getIsIncome() == isIncome) {
-	              balance.add(kostenpunkt);
-	            }   
-	    }
-	    return balance; 
-	    
-	}
+//	protected List<Kosten> getBikeBalance(String rahmennummer, KostenGateway kostengateway){
+//	    KostenArtenGateway kostenArtenGateway = new KostenArtenGateway();
+//	    List<Kosten> allCosts = kostengateway.getKostenByRahmennummer(rahmennummer);
+//	    List<Kosten> balance = new ArrayList<Kosten>();
+//	    for (Kosten kostenpunkt : allCosts) {
+//	        try {            
+//	            if(kostenArtenGateway.getById(kostenpunkt.getKostenArt()).getIsIncome() == isIncome) {
+//                balance.add(kostenpunkt);
+//              }   
+//                
+//            } catch (Exception e) {
+//                System.out.println(e);
+//            }
+//
+//	    }
+//	    return balance; 
+//	}
 
 	
  
