@@ -1,5 +1,10 @@
 <%@page import="org.hibernate.internal.build.AllowSysOut"%>
 <%@ page import ="frontendVendor.VendorFahrradBearbeiten" %>
+<%@ page import="model.Kosten" %>
+<%@ page import="gateway.KostenArtenGateway" %>
+<%@ page import="gateway.KostenGateway" %>
+<%@ page import="model.Fahrrad" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -64,6 +69,36 @@
 				</tr>
 			</table>
 		</form>
+	</div>
+	
+	<div class="fahrradBox">
+		<div class="fahrradBox">
+			<% 
+			KostenArtenGateway kostenArtgateway = new KostenArtenGateway();
+			KostenGateway kostenGateway = new KostenGateway();
+			List<Kosten> balanceList = kostenGateway.getKostenByRahmennummer(request.getParameter("rahmennummer"));
+			for (Kosten kostenpunkt : balanceList){%>
+			<div class="fahrradBox">
+				<div class="left-flex">
+					<p>
+						<%=kostenArtgateway.getById(kostenpunkt.getId())%></p>
+					<p>
+						<%=kostenpunkt.getDatum()%></p>					
+				</div>
+				<div class="right-flex">
+					<p>
+						<%=kostenpunkt.getHoehe()%> </p>
+				</div>
+				
+			</div>
+			<%     
+			}
+			%>
+
+		</div>
+		<div class="balanceSummed">
+		
+		</div>
 	</div>
 </body>
 </html>

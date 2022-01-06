@@ -7,6 +7,7 @@ import model.KostenArten;
 
 public class KostenArtenGateway extends Gateway {
 
+
 	public List<KostenArten> getAll() {
 		TypedQuery<KostenArten> query = manager.createQuery("SELECT k FROM KostenArten k", KostenArten.class);
 		
@@ -31,9 +32,19 @@ public class KostenArtenGateway extends Gateway {
 		manager.getTransaction().commit();
 	}
 
+	
+
+	public void updateKostenArten(KostenArten kostenArten) {
+		manager.getTransaction().begin();
+		manager.merge(kostenArten);
+		manager.getTransaction().commit();
+	}
+
+
 	public void deleteKosten(KostenArten ... arten) {
 		for (KostenArten k : arten) {
 			manager.remove(k);
 		}
 	}
+
 }

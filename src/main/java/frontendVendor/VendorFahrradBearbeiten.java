@@ -54,9 +54,33 @@ public class VendorFahrradBearbeiten extends HttpServlet {
 		request.setAttribute("fahrradBearbeitet", "Fahrrad mit Rahmennummer: " + rahmennummer + " wurde bearbeitet!");
 
 		boolean fahrradSchonGemietet = fahrradGateway.fahrradIsGemietet(rahmennummer, date);
-
+		
+		//request.setAttribute("kostenListe", getBikeBalance(rahmennummer, kostengateway, false));
 		new VendorFahrradBearbeiten().doGet(request, response);
-
+	    // RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/VendorFahrradBearbeiten.jsp");
+        // dispatcher.forward(request, response);
 	}
+	
+	// returns all Costs or all Income depending on "isIncome"
+//	protected List<Kosten> getBikeBalance(String rahmennummer, KostenGateway kostengateway){
+//	    KostenArtenGateway kostenArtenGateway = new KostenArtenGateway();
+//	    List<Kosten> allCosts = kostengateway.getKostenByRahmennummer(rahmennummer);
+//	    List<Kosten> balance = new ArrayList<Kosten>();
+//	    for (Kosten kostenpunkt : allCosts) {
+//	        try {            
+//	            if(kostenArtenGateway.getById(kostenpunkt.getKostenArt()).getIsIncome() == isIncome) {
+//                balance.add(kostenpunkt);
+//              }   
+//                
+//            } catch (Exception e) {
+//                System.out.println(e);
+//            }
+//
+//	    }
+//	    return balance; 
+//	}
+
+	
+ 
 
 }
