@@ -1,6 +1,5 @@
 package gateway;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
@@ -8,7 +7,6 @@ import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
 import model.Benutzer;
-import model.KostenArten;
 
 public class BenutzerGateway extends Gateway {
 
@@ -26,7 +24,8 @@ public class BenutzerGateway extends Gateway {
 			query.setParameter(1, email);
 			return query.getSingleResult();
 		} catch (PersistenceException ex) {
-			return new Benutzer();
+			ex.printStackTrace();
+			return null;
 		}
 	}
 
