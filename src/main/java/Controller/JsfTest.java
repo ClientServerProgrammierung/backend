@@ -8,9 +8,9 @@ import gateway.FahrradGateway;
 
 public class JsfTest {
 	//TODO: delete before deadline
-	public static void main (String[] args) {
+	public static void main (String[] args) throws Exception {
 		
-		
+		/*
 
 		FahrradGateway gateway = new FahrradGateway();
 		Fahrrad fahrrad = new Fahrrad();
@@ -28,7 +28,12 @@ public class JsfTest {
 		
 		
 		List<Fahrrad> list = gateway.getAll();
-		list.forEach(ff -> System.out.println(ff.getModel()));
+		list.forEach(ff -> System.out.println(ff.getModel()));*/
+
+		FahrradGateway gateway = new FahrradGateway();
+		Fahrrad fahrrad = gateway.getAll().get(0);
+		fahrrad.setMarke("asfd klhjfasd jhklasfd jklhfasd klöjfsad jhklöj klöasfd ");
+		gateway.update();
 	}
 	
 }
