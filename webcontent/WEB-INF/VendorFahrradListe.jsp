@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Fahrrad Liste</title>
+<title>Fahrräder</title>
 <link href="assets/css/base.css" rel="stylesheet" type="text/css" />
 <link href="assets/css/navbar.css" rel="stylesheet" type="text/css" />
 <link href="assets/css/startpage.css" rel="stylesheet" type="text/css" />
@@ -24,19 +24,19 @@
 	</div>
 
 	<form class="mietForm" action="./vendorbikelist" method="POST">
-		<h2>Fahrrad Liste</h2>
+		<h2 style="text-align: center; color: white;">Fahrräder</h2>
 		<hr>
 		<br>
-			<table>
+		<!-- <table style="margin-left: auto;margin-right: auto; ">
 				<tr>
 					<td><input type="search" class="form-control" name="search"
-						size="25" placeholder="Search" aria-label="Sizing example input"
-						aria-describedby="inputGroup-sizing-sm" /></td>
+						size="85" placeholder="Search" aria-label="Sizing example input"
+						aria-describedby="inputGroup-sizing-sm"/></td>
 					<td>
 						<button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
 					</td>
 				</tr>
-			</table>
+			</table> -->
 	</form>
 
 	<section>
@@ -60,8 +60,9 @@
 				<form action="./vendoreditbike" method="get">
 					<input type="hidden" name="marke" value=<%=fahrrad.getMarke()%>>
 					<input type="hidden" name="model" value=<%=fahrrad.getModel()%>>
-					<input type="hidden" name="rahmennummer" value=<%=fahrrad.getRahmennummer()%>> 
-					<input class="mietenBTN" type="submit" value="Bearbeiten">
+					<input type="hidden" name="rahmennummer"
+						value=<%=fahrrad.getRahmennummer()%>> <input
+						class="mietenBTN" type="submit" value="Infos">
 				</form>
 
 			</div>

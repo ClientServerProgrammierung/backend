@@ -12,14 +12,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Fahrrad;
 import model.Kosten;
 import model.KostenArten;
 
 import gateway.FahrradGateway;
 import gateway.KostenGateway;
 import gateway.KostenArtenGateway;
-
-
 
 @WebServlet("/vendoreditbike")
 public class VendorFahrradBearbeiten extends HttpServlet {
@@ -34,38 +33,30 @@ public class VendorFahrradBearbeiten extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		FahrradGateway fahrradGateway = new FahrradGateway();
 
+		String marke = request.getParameter("marke");
+		String model = request.getParameter("model");
 		String rahmennummer = request.getParameter("rahmennummer");
+
 		Date date = new Date();
 
 		KostenGateway kostengateway = new KostenGateway();
 
 		// TODO:: check ob fahrrad schon gemietet wurde
-		FahrradGateway fahrradGateway = new FahrradGateway();
-		boolean fahrradSchonGemietet = fahrradGateway.fahrradIsGemietet(rahmennummer, date);
-		
-		getBikeBalance(rahmennummer, kostengateway, true);
 
-	
+		Fahrrad fahrrad = fahrradGateway.getAll().get(0);
+		fahrrad.setMarke(marke);
+		fahrrad.setModel(model);
+
+		fahrradGateway.update();
+		System.out.println("Fahrrad bearbeitet!");
+		request.setAttribute("fahrradBearbeitet", "Fahrrad mit Rahmennummer: " + rahmennummer + " wurde bearbeitet!");
+
+		boolean fahrradSchonGemietet = fahrradGateway.fahrradIsGemietet(rahmennummer, date);
+
 		new VendorFahrradBearbeiten().doGet(request, response);
 
 	}
-	
-	// returns all Costs or all Income depending on "isIncome"
-	protected List<Kosten> getBikeBalance(String rahmennummer, KostenGateway kostengateway, boolean isIncome){
-	    KostenArtenGateway kostenArtenGateway = new KostenArtenGateway();
-	    List<Kosten> allCosts = kostengateway.getKostenByRahmennummer(rahmennummer);
-	    List<Kosten> balance = new ArrayList<Kosten>();
-	    for (Kosten kostenpunkt : allCosts) {
-	          if(kostenArtenGateway.getById(kostenpunkt.getKostenArt()).getIsIncome() == isIncome) {
-	              balance.add(kostenpunkt);
-	            }   
-	    }
-	    return balance; 
-	    
-	}
-
-	
- 
 
 }

@@ -1,3 +1,5 @@
+<%@page import="org.hibernate.internal.build.AllowSysOut"%>
+<%@ page import ="frontendVendor.VendorFahrradBearbeiten" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -12,10 +14,25 @@
 </head>
 <body>
 	<div class="topnav">
-		<a href="./vendorhome" class="active">Home</a> &nbsp;&nbsp; 
-		<a href="./vendorbikelist">Fahrrad Liste</a> &nbsp;&nbsp;
-		<a href="./vendorcreatebike">Fahrrad anlegen</a> &nbsp;&nbsp;
+		<a href="./vendorhome" class="active">Home</a> &nbsp;&nbsp; <a
+			href="./vendorbikelist">Fahrrad Liste</a> &nbsp;&nbsp; <a
+			href="./vendorcreatebike">Fahrrad anlegen</a> &nbsp;&nbsp;
 	</div>
+
+
+	<%	
+	if (request.getAttribute("fahrradBearbeitet") != null) {		
+	%>
+	<section>
+		<div class="mietenFeedback"
+			style="background-color: #d5ffd5; color: #005b00; text-align: center;">
+			<%=request.getAttribute("fahrradBearbeitet")%>
+			
+		</div>
+	</section>
+	<%
+	}
+	%>
 
 	<div class="mietBox">
 
@@ -27,25 +44,23 @@
 				<tr>
 					<td><label>Marke:</label></td>
 					<td><input type="text" name="marke"
-						value="<%=request.getParameter("marke")%>"  
-						 /></td>
+						value="<%=request.getParameter("marke")%>" /></td>
 				</tr>
 				<tr>
 					<td><label>Model:</label></td>
 					<td><input type="text" name="model"
-						value="<%=request.getParameter("model")%>"  
-						 /></td>
+						value="<%=request.getParameter("model")%>" /></td>
 				</tr>
 				<tr>
 					<td><label>Rahmennummer:</label></td>
 					<td><input type="text" name="rahmennummer"
-						value="<%=request.getParameter("rahmennummer")%>" 
-						  /></td>
-				</tr>				
+						value="<%=request.getParameter("rahmennummer")%>" readonly
+						class="readonly" /></td>
+				</tr>
 				<tr>
 					<td></td>
 					<td class="td-miet-btn"><button class="miet-btn" type="submit">Bearbeiten
-							</button></td>
+						</button></td>
 				</tr>
 			</table>
 		</form>
