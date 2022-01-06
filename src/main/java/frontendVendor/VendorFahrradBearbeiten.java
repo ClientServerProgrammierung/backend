@@ -52,7 +52,7 @@ public class VendorFahrradBearbeiten extends HttpServlet {
 	}
 	
 	// returns all Costs or all Income depending on "isIncome"
-	protected List<Kosten> getBikeBalance(String rahmennummer, KostenGateway kostengateway, boolean isIncome)
+	protected List<Kosten> getBikeBalance(String rahmennummer, KostenGateway kostengateway, boolean isIncome){
 	    KostenArtenGateway kostenArtenGateway = new KostenArtenGateway();
 	    List<Kosten> allCosts = kostengateway.getKostenByRahmennummer(rahmennummer);
 	    List<Kosten> balance = new ArrayList<Kosten>();
