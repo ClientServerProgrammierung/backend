@@ -1,11 +1,16 @@
 package gateway;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
+
+import org.bouncycastle.util.encoders.Hex;
 
 import model.Benutzer;
 import model.KostenArten;
@@ -55,12 +60,28 @@ public class BenutzerGateway extends Gateway {
 				System.out.println("user DOES NOT exist.");
 				System.out.println("create user:" + benutzer.getEmail());
 				manager.getTransaction().begin();
-				manager.persist(benutzer);
+				manager.persist(hashBenutzerPassword(benutzer));
 				manager.getTransaction().commit();
 			}
 		} catch (PersistenceException ex) {
 			System.out.println(ex);
 		}
+	}
+
+	public Benutzer hashBenutzerPassword(Benutzer benutzer) {
+		String passwordToHash = benutzer.getPassword();
+		MessageDigest digest;
+		try {
+			digest = MessageDigest.getInstance("SHA-256");
+			byte[] hash = digest.digest(passwordToHash.getBytes(StandardCharsets.UTF_8));
+			String sha256hex = new String(Hex.encode(hash));
+            benutzer.setPassword(sha256hex);
+			
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return benutzer;
 	}
 
 	public void updateBenutzer(Benutzer benutzer) {

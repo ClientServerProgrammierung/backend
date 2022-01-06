@@ -11,6 +11,7 @@ import java.util.Date;
 import gateway.BenutzerGateway;
 import gateway.FahrradGateway;
 import gateway.KostenArtenGateway;
+import gateway.LoginGateway;
 
 
 public class JsfTest {
@@ -39,16 +40,18 @@ public class JsfTest {
 //		list.forEach(ff -> System.out.println(ff.getModel()));
 		
 
-//		BenutzerGateway gateway = new BenutzerGateway();
-//		Benutzer benutzer = new Benutzer();
-//		benutzer.setVorname("ib");
-//		benutzer.setNachname("sc");
-//		benutzer.setEmail("ib@gm.de");
-//		benutzer.setGeburtstdatum(new Date(1992, 1,1));
-//		benutzer.setAdresse("ib");
-//		gateway.insertBenutzer(benutzer);
+		 LoginGateway gateway = new LoginGateway();
+		Benutzer benutzer = new Benutzer();
+		benutzer.setVorname("nn");
+		benutzer.setNachname("mm");
+		benutzer.setEmail("qq@ss.de");
+		benutzer.setPassword("qq");
+		benutzer.setGeburtstdatum(new Date(1992, 1,1));
+ 		benutzer.setAdresse("irr");
+	// 	gateway.insertBenutzer(benutzer);
 //		List<Benutzer> list =gateway.getAllBenutzer();
-//		list.forEach(ff -> System.out.println(ff.getEmail()));
+    //	list.forEach(ff -> System.out.println(ff.getPassword()));
+		System.out.println(gateway.IsLogged(benutzer));
 		
 //		BenutzerGateway gateway = new BenutzerGateway();
 //		Benutzer benutzer = gateway.getBenutzerByEmail("ib@gm.de");
