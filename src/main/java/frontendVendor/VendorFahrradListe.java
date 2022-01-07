@@ -27,16 +27,17 @@ public class VendorFahrradListe extends HttpServlet {
 
 		//TODO FOR LOOP LÖSCHEN DA WIR ALLE FAHRRÄDER ANZEIGEN WOLLEN!
 		List<Fahrrad> fahrradListe = gateway.getAll();
-		List<Fahrrad> fahrradListeVerfuegbar = new ArrayList<>();
+		
+//		List<Fahrrad> fahrradListeVerfuegbar = new ArrayList<>();
+//
+//		for (Fahrrad fahrrad : fahrradListe) {
+//			// Fahrräder die schon gemietet sind, werden nicht aufgelistet.
+//
+//				fahrradListeVerfuegbar.add(fahrrad);
+//			
+//		}
 
-		for (Fahrrad fahrrad : fahrradListe) {
-			// Fahrräder die schon gemietet sind, werden nicht aufgelistet.
-			if (!gateway.fahrradIsGemietet(fahrrad.getRahmennummer(), currentDate)) {
-				fahrradListeVerfuegbar.add(fahrrad);
-			}
-		}
-
-		request.setAttribute("fahrradListe", fahrradListeVerfuegbar);
+		request.setAttribute("fahrradListe", fahrradListe);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/VendorFahrradListe.jsp");
 		dispatcher.forward(request, response);

@@ -45,7 +45,7 @@
 	<div class="mietBox">
 
 		<form class="mietForm" action="./vendoreditbike" method="POST">
-			<h2 style="text-align: center;">Fahrrad bearbeiten</h2>
+			<h1 style="text-align: center;">Fahrrad &Uuml;bersicht</h1>
 			<hr>
 			<br>
 			<table>
@@ -80,7 +80,7 @@
 		List<Kosten> balanceList = kostenGateway.getKostenByRahmennummer(request.getParameter("rahmennummer"));
 		%>
 		<div class="mietForm">
-		<h2 style="text-align: center;">Finanzen</h2>
+		<!-- <h2 style="text-align: center;">Finanzen</h2> -->
 			<table style="width: 100%">
 				<tr>
 					<th style="text-align: left;">Art</th>
@@ -108,9 +108,9 @@
 		<div class="mietForm">
 			<table>
 				<tr>
-					<td><h3 style="text-align: left;">Total:</h3></td>
-					<td><h3 style="text-align: right; margin-left: 15em;">5000
-							&euro;</h3></td>
+					<td><h2 style="text-align: left;">Total:</h2></td>
+					<td><h2 style="text-align: right; margin-left: 12em;">5000
+							&euro;</h2></td>
 				</tr>
 			</table>
 
