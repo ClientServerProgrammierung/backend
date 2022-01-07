@@ -1,10 +1,11 @@
 <%@page import="org.hibernate.internal.build.AllowSysOut"%>
-<%@ page import ="frontendVendor.VendorFahrradBearbeiten" %>
-<%@ page import="model.Kosten" %>
-<%@ page import="gateway.KostenArtenGateway" %>
-<%@ page import="gateway.KostenGateway" %>
-<%@ page import="model.Fahrrad" %>
-<%@ page import="java.util.List" %>
+<%@ page import="frontendVendor.VendorFahrradBearbeiten"%>
+<%@ page import="model.Kosten"%>
+<%@ page import="gateway.KostenArtenGateway"%>
+<%@ page import="gateway.KostenGateway"%>
+<%@ page import="model.KostenArten"%>
+<%@ page import="model.Fahrrad"%>
+<%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -16,6 +17,8 @@
 <link href="assets/css/navbar.css" rel="stylesheet" type="text/css" />
 <link href="assets/css/fahrradMieten.css" rel="stylesheet"
 	type="text/css" />
+<link href="assets/css/fahrradAuswahl.css" rel="stylesheet"
+	type="text/css" />
 </head>
 <body>
 	<div class="topnav">
@@ -25,14 +28,14 @@
 	</div>
 
 
-	<%	
-	if (request.getAttribute("fahrradBearbeitet") != null) {		
+	<%
+	if (request.getAttribute("fahrradBearbeitet") != null) {
 	%>
 	<section>
 		<div class="mietenFeedback"
 			style="background-color: #d5ffd5; color: #005b00; text-align: center;">
 			<%=request.getAttribute("fahrradBearbeitet")%>
-			
+
 		</div>
 	</section>
 	<%
@@ -70,35 +73,33 @@
 			</table>
 		</form>
 	</div>
-	
-	<div class="fahrradBox">
-		<div class="fahrradBox">
-			<% 
-			KostenArtenGateway kostenArtgateway = new KostenArtenGateway();
-			KostenGateway kostenGateway = new KostenGateway();
-			List<Kosten> balanceList = kostenGateway.getKostenByRahmennummer(request.getParameter("rahmennummer"));
-			for (Kosten kostenpunkt : balanceList){%>
-			<div class="fahrradBox">
-				<div class="left-flex">
-					<p>
-						<%=kostenArtgateway.getById(kostenpunkt.getId())%></p>
-					<p>
-						<%=kostenpunkt.getDatum()%></p>					
-				</div>
-				<div class="right-flex">
-					<p>
-						<%=kostenpunkt.getHoehe()%> </p>
-				</div>
-				
+	<section>
+		<%
+		KostenArtenGateway kostenArtenGateway = new KostenArtenGateway();
+		KostenGateway kostenGateway = new KostenGateway();
+		List<Kosten> balanceList = kostenGateway.getKostenByRahmennummer(request.getParameter("rahmennummer"));
+		for (Kosten kostenpunkt : balanceList) {
+		%>
+		<div class="mietForm" style="text-align: center;">
+		<h2>Kostenplan</h2>
+			<div class="left-flex">
+				<p>
+					Datum:
+					<%=kostenpunkt.getDatum()%>
+					&nbsp;&nbsp;&nbsp; Hoehe:
+					<%=kostenpunkt.getHoehe() + "&euro;"%>
+					&nbsp;&nbsp;&nbsp; Kostenart: <%=kostenpunkt.getKostenArtenObj().getBeschreibung() %>
+
+				</p>
 			</div>
-			<%     
-			}
-			%>
 
 		</div>
-		<div class="balanceSummed">
-		
-		</div>
-	</div>
+		<%
+		}
+		%>
+	</section>
+
+
+	<div class="balanceSummed"></div>
 </body>
 </html>
