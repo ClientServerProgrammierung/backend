@@ -45,7 +45,7 @@
 	<div class="mietBox">
 
 		<form class="mietForm" action="./vendoreditbike" method="POST">
-			<h2>Fahrrad bearbeiten</h2>
+			<h2 style="text-align: center;">Fahrrad bearbeiten</h2>
 			<hr>
 			<br>
 			<table>
@@ -78,28 +78,44 @@
 		KostenArtenGateway kostenArtenGateway = new KostenArtenGateway();
 		KostenGateway kostenGateway = new KostenGateway();
 		List<Kosten> balanceList = kostenGateway.getKostenByRahmennummer(request.getParameter("rahmennummer"));
-		for (Kosten kostenpunkt : balanceList) {
 		%>
-		<div class="mietForm" style="text-align: center;">
-		<h2>Kostenplan</h2>
-			<div class="left-flex">
-				<p>
-					Datum:
-					<%=kostenpunkt.getDatum()%>
-					&nbsp;&nbsp;&nbsp; Hoehe:
-					<%=kostenpunkt.getHoehe() + "&euro;"%>
-					&nbsp;&nbsp;&nbsp; Kostenart: <%=kostenpunkt.getKostenArtenObj().getBeschreibung() %>
+		<div class="mietForm">
+		<h2 style="text-align: center;">Finanzen</h2>
+			<table style="width: 100%">
+				<tr>
+					<th style="text-align: left;">Art</th>
+					<th style="text-align: center;">Wertstellung</th>
+					<th style="text-align: right;">Betrag</th>
+				</tr>
 
-				</p>
-			</div>
+				<%
+				for (Kosten kostenpunkt : balanceList) {
+				%>
+
+				<tr>
+					<td style="text-align: left;"><%=kostenpunkt.getKostenArtenObj().getBeschreibung()%></td>
+					<td style="text-align: center;"><%=kostenpunkt.getDatum()%></td>
+					<td style="text-align: right; "><%=kostenpunkt.getHoehe() + "&euro;"%></td>
+				</tr>
+
+
+				<%
+				}
+				%>
+			</table>
+		</div>
+
+		<div class="mietForm">
+			<table>
+				<tr>
+					<td><h3 style="text-align: left;">Total:</h3></td>
+					<td><h3 style="text-align: right; margin-left: 15em;">5000
+							&euro;</h3></td>
+				</tr>
+			</table>
+
 
 		</div>
-		<%
-		}
-		%>
 	</section>
-
-
-	<div class="balanceSummed"></div>
 </body>
 </html>
