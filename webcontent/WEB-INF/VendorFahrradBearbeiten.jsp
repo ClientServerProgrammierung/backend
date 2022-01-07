@@ -89,7 +89,13 @@
 				</tr>
 
 				<%
+				int total = 0;
 				for (Kosten kostenpunkt : balanceList) {
+				    if(kostenpunkt.getKostenArtenObj().getIsIncome()){
+				        total += kostenpunkt.getHoehe();
+				    } else {
+				        total -= kostenpunkt.getHoehe();
+				    }
 				%>
 
 				<tr>
@@ -106,10 +112,13 @@
 		</div>
 
 		<div class="mietForm">
+		<%
+		
+		%>
 			<table>
 				<tr>
 					<td><h2 style="text-align: left;">Total:</h2></td>
-					<td><h2 style="text-align: right; margin-left: 12em;">5000
+					<td><h2 style="text-align: right; margin-left: 12em;"><%=total%>
 							&euro;</h2></td>
 				</tr>
 			</table>
