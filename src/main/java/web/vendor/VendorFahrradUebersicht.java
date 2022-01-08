@@ -1,4 +1,4 @@
-package frontendVendor;
+package web.vendor;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,13 +21,13 @@ import gateway.KostenGateway;
 import gateway.KostenArtenGateway;
 
 @WebServlet("/vendoreditbike")
-public class VendorFahrradBearbeiten extends HttpServlet {
+public class VendorFahrradUebersicht extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/VendorFahrradBearbeiten.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/VendorFahrradUebersicht.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -53,7 +53,7 @@ public class VendorFahrradBearbeiten extends HttpServlet {
 			request.setAttribute("fahrradBearbeitet",
 					"Fahrrad mit Rahmennummer: " + rahmennummer + " wurde bearbeitet!");
 			
-			new VendorFahrradBearbeiten().doGet(request, response);
+			new VendorFahrradUebersicht().doGet(request, response);
 
 		} else if (request.getParameter("deleteBike") != null) {
 			List<Fahrrad> bikesToDelete = fahrradGateway.getFahrradByNummer(rahmennummer);

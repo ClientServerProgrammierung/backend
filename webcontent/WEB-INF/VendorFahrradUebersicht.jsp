@@ -1,5 +1,5 @@
 <%@page import="org.hibernate.internal.build.AllowSysOut"%>
-<%@ page import="frontendVendor.VendorFahrradBearbeiten"%>
+<%@ page import="web.vendor.VendorFahrradUebersicht"%>
 <%@ page import="model.Kosten"%>
 <%@ page import="gateway.KostenArtenGateway"%>
 <%@ page import="gateway.KostenGateway"%>

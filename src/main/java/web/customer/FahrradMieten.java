@@ -1,4 +1,4 @@
-package web;
+package web.customer;
 
 import java.io.IOException;
 

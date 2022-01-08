@@ -1,4 +1,4 @@
-package frontendVendor;
+package web.vendor;
 
 import java.io.IOException;
 import java.util.Date;

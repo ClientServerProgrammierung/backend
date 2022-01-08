@@ -23,6 +23,20 @@
 			nur für Mitarbeiter (Email: &nbsp;<span class="font-red">contact@test.de</span>,
 			Pw: &nbsp;<span class="font-red">123</span>)
 		</div>
+			<%
+			if (request.getAttribute("error") != null) {
+				if (request.getAttribute("error").equals("email")) {
+					%>
+					<div class="login-hinweis">E-Mail falsch</div>
+					<%
+				}
+				else if (request.getAttribute("error").equals("password")) {
+					%>
+					<div class="login-hinweis">Passwort falsch</div>
+					<%
+				}
+			}
+			%>
 	</section>
 
 	<div class="wrapper">
@@ -41,12 +55,12 @@
 				<div class="slider-tab"></div>
 			</div>
 			<div class="form-inner">
-				<form action="#" class="login">
+				<form action="#" class="login" method="POST">
 					<div class="field">
-						<input type="text" placeholder="Email Address" required>
+						<input type="text" placeholder="Email Address" name="email" required>
 					</div>
 					<div class="field">
-						<input type="password" placeholder="Password" required>
+						<input type="password" placeholder="Password" name="password" required>
 					</div>
 					<!--  <div class="pass-link">
 						<a href="#">Forgot password?</a>

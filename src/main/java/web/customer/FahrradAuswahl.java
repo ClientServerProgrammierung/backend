@@ -1,4 +1,4 @@
-package frontendVendor;
+package web.customer;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import gateway.FahrradGateway;
 import model.Fahrrad;
 
-@WebServlet("/vendorbikelist")
-public class VendorFahrradListe extends HttpServlet {
+@WebServlet("/fahrradAuswahl")
+public class FahrradAuswahl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -25,21 +25,19 @@ public class VendorFahrradListe extends HttpServlet {
 		Date currentDate = new Date();
 		FahrradGateway gateway = new FahrradGateway();
 
-		//TODO FOR LOOP LÖSCHEN DA WIR ALLE FAHRRÄDER ANZEIGEN WOLLEN!
 		List<Fahrrad> fahrradListe = gateway.getAll();
-		
-//		List<Fahrrad> fahrradListeVerfuegbar = new ArrayList<>();
-//
-//		for (Fahrrad fahrrad : fahrradListe) {
-//			// Fahrräder die schon gemietet sind, werden nicht aufgelistet.
-//
-//				fahrradListeVerfuegbar.add(fahrrad);
-//			
-//		}
+		List<Fahrrad> fahrradListeVerfuegbar = new ArrayList<>();
 
-		request.setAttribute("fahrradListe", fahrradListe);
+		for (Fahrrad fahrrad : fahrradListe) {
+			// Fahrräder die schon gemietet sind, werden nicht aufgelistet.
+			if (!gateway.fahrradIsGemietet(fahrrad.getRahmennummer(), currentDate)) {
+				fahrradListeVerfuegbar.add(fahrrad);
+			}
+		}
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/VendorFahrradListe.jsp");
+		request.setAttribute("fahrradListe", fahrradListeVerfuegbar);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/FahrradAuswahl.jsp");
 		dispatcher.forward(request, response);
 	}
 
