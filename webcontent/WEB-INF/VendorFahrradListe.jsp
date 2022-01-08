@@ -19,7 +19,7 @@
 </head>
 <body>
 	<div class="topnav">
-		<a href="./vendorhome" class="active">Home</a> &nbsp;&nbsp; <a
+		<a
 			href="./vendorcreatebike">Fahrrad anlegen</a> &nbsp;&nbsp;
 	</div>
 
