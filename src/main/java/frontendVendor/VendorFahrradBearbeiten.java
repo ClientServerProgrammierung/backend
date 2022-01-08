@@ -22,46 +22,49 @@ import gateway.KostenArtenGateway;
 
 @WebServlet("/vendoreditbike")
 public class VendorFahrradBearbeiten extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/VendorFahrradBearbeiten.jsp");
-		dispatcher.forward(request, response);
-	}
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/VendorFahrradBearbeiten.jsp");
+        dispatcher.forward(request, response);
+    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		FahrradGateway fahrradGateway = new FahrradGateway();
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        FahrradGateway fahrradGateway = new FahrradGateway();
 
-		String marke = request.getParameter("marke");
-		String model = request.getParameter("model");
-		String rahmennummer = request.getParameter("rahmennummer");
+        String marke = request.getParameter("marke");
+        String model = request.getParameter("model");
+        String rahmennummer = request.getParameter("rahmennummer");
 
-		Date date = new Date();
+        if (request.getParameter("updateBike") != null) {
 
-		KostenGateway kostengateway = new KostenGateway();
+            Date date = new Date();
+            KostenGateway kostengateway = new KostenGateway();
 
-		// TODO:: check ob fahrrad schon gemietet wurde
+            Fahrrad fahrrad = fahrradGateway.getAll().get(0);
+            fahrrad.setMarke(marke);
+            fahrrad.setModel(model);
 
-		Fahrrad fahrrad = fahrradGateway.getAll().get(0);
-		fahrrad.setMarke(marke);
-		fahrrad.setModel(model);
+            fahrradGateway.update();
+            System.out.println("Fahrrad bearbeitet!");
+            request.setAttribute("fahrradBearbeitet",
+                    "Fahrrad mit Rahmennummer: " + rahmennummer + " wurde bearbeitet!");
+            
+        } else if (request.getParameter("deleteBike") != null) {
+            
+            fahrradGateway.deleteFahrrad(fahrradGateway.getFahrradByNummer(rahmennummer).get(0));
+            request.setAttribute("fahrradBearbeitet",
+                    "Fahrrad mit Rahmennummer: " + rahmennummer + " wurde gelöscht!");
 
-		fahrradGateway.update();
-		System.out.println("Fahrrad bearbeitet!");
-		request.setAttribute("fahrradBearbeitet", "Fahrrad mit Rahmennummer: " + rahmennummer + " wurde bearbeitet!");
+        }
 
-		boolean fahrradSchonGemietet = fahrradGateway.fahrradIsGemietet(rahmennummer, date);
-		
-		//request.setAttribute("kostenListe", getBikeBalance(rahmennummer, kostengateway, false));
-		new VendorFahrradBearbeiten().doGet(request, response);
-	    // RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/VendorFahrradBearbeiten.jsp");
-        // dispatcher.forward(request, response);
-	}
-	
-	// returns all Costs or all Income depending on "isIncome"
+        new VendorFahrradBearbeiten().doGet(request, response);
+    }
+
+    // returns all Costs or all Income depending on "isIncome"
 //	protected List<Kosten> getBikeBalance(String rahmennummer, KostenGateway kostengateway){
 //	    KostenArtenGateway kostenArtenGateway = new KostenArtenGateway();
 //	    List<Kosten> allCosts = kostengateway.getKostenByRahmennummer(rahmennummer);
@@ -79,8 +82,5 @@ public class VendorFahrradBearbeiten extends HttpServlet {
 //	    }
 //	    return balance; 
 //	}
-
-	
- 
 
 }

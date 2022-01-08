@@ -65,8 +65,9 @@
 						class="readonly" /></td>
 				</tr>
 				<tr>
-					<td></td>
-					<td class="td-miet-btn"><button class="miet-btn" type="submit">Änderung Speichern
+					<td class="td-miet-btn"><button class="miet-btn" type="submit" name="deleteBike">Fahrrad Löschen
+						</button></td>
+					<td class="td-miet-btn"><button class="miet-btn" type="submit" name="updateBike">Änderung Speichern
 						</button></td>
 				</tr>
 			</table>
