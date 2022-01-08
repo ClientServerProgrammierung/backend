@@ -35,7 +35,6 @@
 		<div class="mietenFeedback"
 			style="background-color: #d5ffd5; color: #005b00; text-align: center;">
 			<%=request.getAttribute("fahrradBearbeitet")%>
-
 		</div>
 	</section>
 	<%
@@ -67,7 +66,7 @@
 				</tr>
 				<tr>
 					<td></td>
-					<td class="td-miet-btn"><button class="miet-btn" type="submit">Bearbeiten
+					<td class="td-miet-btn"><button class="miet-btn" type="submit">Änderung Speichern
 						</button></td>
 				</tr>
 			</table>
@@ -93,19 +92,28 @@
 				for (Kosten kostenpunkt : balanceList) {
 				    if(kostenpunkt.getKostenArtenObj().getIsIncome()){
 				        total += kostenpunkt.getHoehe();
-				    } else {
+					%>
+	
+					<tr>
+						<td style="text-align: left;"><%=kostenpunkt.getKostenArtenObj().getBeschreibung()%></td>
+						<td style="text-align: center;"><%=kostenpunkt.getDatum()%></td>
+						<td style="text-align: right; color: green"><%=kostenpunkt.getHoehe() + "&euro;"%></td>
+					</tr>
+					<%} else {
 				        total -= kostenpunkt.getHoehe();
-				    }
-				%>
-
-				<tr>
-					<td style="text-align: left;"><%=kostenpunkt.getKostenArtenObj().getBeschreibung()%></td>
-					<td style="text-align: center;"><%=kostenpunkt.getDatum()%></td>
-					<td style="text-align: right; "><%=kostenpunkt.getHoehe() + "&euro;"%></td>
-				</tr>
-
-
-				<%
+				        %>
+				        					<tr>
+						<td style="text-align: left;"><%=kostenpunkt.getKostenArtenObj().getBeschreibung()%></td>
+						<td style="text-align: center;"><%=kostenpunkt.getDatum()%></td>
+						<td style="text-align: right; color: red"><%=kostenpunkt.getHoehe() + "&euro;"%></td>
+					</tr>
+					 <% 
+				    } 
+				    %>
+					
+	
+	
+					<%
 				}
 				%>
 			</table>
@@ -118,8 +126,13 @@
 			<table>
 				<tr>
 					<td><h2 style="text-align: left;">Total:</h2></td>
-					<td><h2 style="text-align: right; margin-left: 12em;"><%=total%>
+					<%if(total< 0){ %>
+					<td><h2 style="text-align: right; margin-left: 11em; color: red"><%=total%>
 							&euro;</h2></td>
+					<% } else {%>
+						<td><h2 style="text-align: right; margin-left: 11em; color: green"><%=total%>
+						&euro;</h2></td>
+					<% } %>
 				</tr>
 			</table>
 
