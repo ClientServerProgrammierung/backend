@@ -48,9 +48,11 @@ public class BenutzerGateway extends Gateway {
 	}
 
 	public void deleteBenutzer(Benutzer... benutzer) {
+		manager.getTransaction().begin();
 		for (Benutzer b : benutzer) {
 			manager.remove(b);
 		}
+		manager.getTransaction().commit();
 	}
 
 	public void insertBenutzer(Benutzer benutzer) {

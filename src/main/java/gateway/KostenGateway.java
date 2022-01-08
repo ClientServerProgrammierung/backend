@@ -29,8 +29,10 @@ public class KostenGateway extends Gateway {
 	}
 	
 	public void deleteKosten(Kosten ... kosten) {
+		manager.getTransaction().begin();
 		for (Kosten k : kosten) {
 			manager.remove(k);
 		}
+		manager.getTransaction().commit();
 	}
 }

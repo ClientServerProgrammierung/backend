@@ -42,9 +42,11 @@ public class KostenArtenGateway extends Gateway {
 
 
 	public void deleteKosten(KostenArten ... arten) {
+		manager.getTransaction().begin();
 		for (KostenArten k : arten) {
 			manager.remove(k);
 		}
+		manager.getTransaction().commit();
 	}
 
 }
