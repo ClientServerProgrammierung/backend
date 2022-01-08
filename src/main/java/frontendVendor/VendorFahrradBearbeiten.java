@@ -54,10 +54,14 @@ public class VendorFahrradBearbeiten extends HttpServlet {
                     "Fahrrad mit Rahmennummer: " + rahmennummer + " wurde bearbeitet!");
             
         } else if (request.getParameter("deleteBike") != null) {
-            
-            fahrradGateway.deleteFahrrad(fahrradGateway.getFahrradByNummer(rahmennummer).get(0));
+            List<Fahrrad> bikesToDelete = fahrradGateway.getFahrradByNummer(rahmennummer);
+            for( Fahrrad bike: bikesToDelete) {
+                fahrradGateway.deleteFahrrad(bike);
+            }
             request.setAttribute("fahrradBearbeitet",
                     "Fahrrad mit Rahmennummer: " + rahmennummer + " wurde gelöscht!");
+            RequestDispatcher dispatch = request.getRequestDispatcher("VendorFahrradListe.jsp");
+            dispatch.forward(request, response);
 
         }
 
