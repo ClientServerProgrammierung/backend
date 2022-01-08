@@ -35,7 +35,7 @@ public class LoginRegister extends HttpServlet {
 			request.setAttribute("error", "password");
 			doGet(request, response);
 		} else if (email.equals(stockEmail) && password.equals(stockPassword)) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/vendorhome");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/vendorbikelist");
 			dispatcher.forward(request, response);
 		}
 	}
