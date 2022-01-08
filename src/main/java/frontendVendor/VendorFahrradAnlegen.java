@@ -71,8 +71,8 @@ public class VendorFahrradAnlegen extends HttpServlet {
 	    
 	    // Neues Fahrrad und Anschaffungskosten in Datenbank einfügen
 	    fahrradGateway.insertFahrrad(fahrrad);
-	    kostenGateway.insertKosten(aPreis);
+	    kostenGateway.insertKosten(aPreis);	    
 	    
-	    
+	    new VendorFahrradListe().doGet(request, response);
 	}
 }

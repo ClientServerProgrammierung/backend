@@ -65,10 +65,10 @@
 						class="readonly" /></td>
 				</tr>
 				<tr>
-					<td class="td-miet-btn"><button class="miet-btn" type="submit" name="deleteBike">Fahrrad Löschen
-						</button></td>
-					<td class="td-miet-btn"><button class="miet-btn" type="submit" name="updateBike">Änderung Speichern
-						</button></td>
+					<td class="td-miet-btn"><button class="miet-btn" type="submit"
+							name="deleteBike">Fahrrad Lï¿½schen</button></td>
+					<td class="td-miet-btn"><button class="miet-btn" type="submit"
+							name="updateBike">ï¿½nderung Speichern</button></td>
 				</tr>
 			</table>
 		</form>
@@ -80,7 +80,7 @@
 		List<Kosten> balanceList = kostenGateway.getKostenByRahmennummer(request.getParameter("rahmennummer"));
 		%>
 		<div class="mietForm">
-		<!-- <h2 style="text-align: center;">Finanzen</h2> -->
+			<!-- <h2 style="text-align: center;">Finanzen</h2> -->
 			<table style="width: 100%">
 				<tr>
 					<th style="text-align: left;">Art</th>
@@ -91,49 +91,60 @@
 				<%
 				int total = 0;
 				for (Kosten kostenpunkt : balanceList) {
-				    if(kostenpunkt.getKostenArtenObj().getIsIncome()){
-				        total += kostenpunkt.getHoehe();
-					%>
-	
-					<tr>
-						<td style="text-align: left;"><%=kostenpunkt.getKostenArtenObj().getBeschreibung()%></td>
-						<td style="text-align: center;"><%=kostenpunkt.getDatum()%></td>
-						<td style="text-align: right; color: green"><%=kostenpunkt.getHoehe() + "&euro;"%></td>
-					</tr>
-					<%} else {
-				        total -= kostenpunkt.getHoehe();
-				        %>
-				        					<tr>
-						<td style="text-align: left;"><%=kostenpunkt.getKostenArtenObj().getBeschreibung()%></td>
-						<td style="text-align: center;"><%=kostenpunkt.getDatum()%></td>
-						<td style="text-align: right; color: red"><%=kostenpunkt.getHoehe() + "&euro;"%></td>
-					</tr>
-					 <% 
-				    } 
-				    %>
-					
-	
-	
-					<%
+					if (kostenpunkt.getKostenArtenObj().getIsIncome()) {
+						total += kostenpunkt.getHoehe();
+				%>
+
+				<tr>
+					<td style="text-align: left;"><%=kostenpunkt.getKostenArtenObj().getBeschreibung()%></td>
+					<td style="text-align: center;"><%=kostenpunkt.getDatum()%></td>
+					<td style="text-align: right; color: green"><%=kostenpunkt.getHoehe() + "&euro;"%></td>
+				</tr>
+				<%
+				} else {
+				total -= kostenpunkt.getHoehe();
+				%>
+				<tr>
+					<td style="text-align: left;"><%=kostenpunkt.getKostenArtenObj().getBeschreibung()%></td>
+					<td style="text-align: center;"><%=kostenpunkt.getDatum()%></td>
+					<td style="text-align: right; color: red"><%=kostenpunkt.getHoehe() + "&euro;"%></td>
+				</tr>
+				<%
+				}
+				%>
+
+
+
+				<%
 				}
 				%>
 			</table>
 		</div>
 
 		<div class="mietForm">
-		<%
-		
-		%>
+			<%
+
+			%>
 			<table>
 				<tr>
 					<td><h2 style="text-align: left;">Total:</h2></td>
-					<%if(total< 0){ %>
-					<td><h2 style="text-align: right; margin-left: 11em; color: red"><%=total%>
-							&euro;</h2></td>
-					<% } else {%>
-						<td><h2 style="text-align: right; margin-left: 11em; color: green"><%=total%>
-						&euro;</h2></td>
-					<% } %>
+					<%
+					if (total < 0) {
+					%>
+					<td><h2
+							style="text-align: right; margin-left: 11em; color: red"><%=total%>
+							&euro;
+						</h2></td>
+					<%
+					} else {
+					%>
+					<td><h2
+							style="text-align: right; margin-left: 11em; color: green"><%=total%>
+							&euro;
+						</h2></td>
+					<%
+					}
+					%>
 				</tr>
 			</table>
 
