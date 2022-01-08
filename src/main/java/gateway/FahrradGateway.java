@@ -48,9 +48,11 @@ public class FahrradGateway extends Gateway {
 	}
 
 	public void deleteFahrrad(Fahrrad... fahrrad) {
+		manager.getTransaction().begin();
 		for (Fahrrad f : fahrrad) {
 			manager.remove(f);
 		}
+		manager.getTransaction().commit();
 	}
 
 	public boolean fahrradIsGemietet(String rahmennummer, Date wunschDatum) {

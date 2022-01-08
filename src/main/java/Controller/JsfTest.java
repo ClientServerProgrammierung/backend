@@ -39,7 +39,7 @@ public class JsfTest {
 //		List<Fahrrad> list = gateway.getAll();
 //		list.forEach(ff -> System.out.println(ff.getModel()));
 		
-
+/*
 		 LoginGateway gateway = new LoginGateway();
 		Benutzer benutzer = new Benutzer();
 		benutzer.setVorname("nn");
@@ -60,10 +60,11 @@ public class JsfTest {
 //		List<Benutzer> list =gateway.getAllBenutzer();
 //		list.forEach(ff -> System.out.println(ff.getVorname()));
 		
-
-     
-
+*/
 		
+		FahrradGateway gw = new FahrradGateway();
+		gw.deleteFahrrad(gw.getAll().get(0));
+     
 	}
 	
 }

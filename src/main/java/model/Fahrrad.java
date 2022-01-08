@@ -56,16 +56,5 @@ public class Fahrrad implements Serializable {
 	public void setModel(String model) {
 		this.model = model;
 	}
-	
-	public  List<Fahrrad> getFahrrader () {
-		EntityManagerFactory factory = null;
-		factory = Persistence.createEntityManagerFactory("shop");
-		EntityManager manager = factory.createEntityManager();
-		TypedQuery<Fahrrad> query = manager.createQuery("SELECT f FROM Fahrrad f", Fahrrad.class);
-		List<Fahrrad> allFahrrader = query.getResultList();
-		
-		return allFahrrader;
-		
-	}
 
 }
