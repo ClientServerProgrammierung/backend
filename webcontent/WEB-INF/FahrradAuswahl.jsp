@@ -16,7 +16,7 @@
 <body>
 	<div class="topnav">
 		<a href="./home">Home</a> <a href="./fahrradAuswahl" class="active">Fahrrad
-			Auswahl</a> <a href="#contact">Contact</a> <a href="#about">About</a> <a
+			Auswahl</a> <a
 			href="./login">Login</a>
 
 	</div>
