@@ -40,7 +40,6 @@ public class FahrradMieten extends HttpServlet {
 		String adresse = request.getParameter("adresse");
 		BenutzerGateway benutzerGateway = new BenutzerGateway();
 		KostenGateway kostengateway = new KostenGateway();
-//		KostenArtenGateway kostenArtenGateway = new KostenArtenGateway();
 
 		// boolean ob fahrrad schon gemietet wurde
 		FahrradGateway fahrradGateway = new FahrradGateway();
@@ -64,8 +63,6 @@ public class FahrradMieten extends HttpServlet {
 			kosten.setBenutzer(nutzer.getId());
 			kosten.setDauer(dauer);
 			kosten.setFahrradnummer(rahmennummer);
-//			KostenArten miete = kostenArtenGateway.getById(3);
-//			kosten.setKostenArt(miete.getId());
 			kosten.setKostenArt(3);
 			kosten.setHoehe(5 * dauer);
 			kostengateway.insertKosten(kosten);

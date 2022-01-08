@@ -16,7 +16,6 @@ public abstract class Gateway {
 		 * This method saves pending updates. Just run this method and every entity will be saved,
 		 * that has been changed through their setters.
 		 * */
-		// This implementations is really weird. Just update your entity and execute update();
 		EntityTransaction transaction = manager.getTransaction();
 		transaction.begin();
 		transaction.commit();

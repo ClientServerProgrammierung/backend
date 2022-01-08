@@ -56,9 +56,6 @@ public class FahrradGateway extends Gateway {
 	}
 
 	public boolean fahrradIsGemietet(String rahmennummer, Date wunschDatum) {
-		/*
-		 * kann man auslaggern in servlet oder so
-		 */
 		KostenGateway kostengateway = new KostenGateway();
 		List<Kosten> kosten = kostengateway.getKostenByRahmennummer(rahmennummer);
 

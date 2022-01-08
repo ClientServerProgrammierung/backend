@@ -3,8 +3,6 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import org.hibernate.internal.build.AllowSysOut;
-
 import gateway.FahrradGateway;
 import gateway.KostenArtenGateway;
 
@@ -22,8 +20,6 @@ public class Kosten implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	//@SequenceGenerator(name="KOSTEN_ID_GENERATOR", sequenceName="KOSTEN_ID_SEQ")
-	//@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="KOSTEN_ID_GENERATOR")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
@@ -101,7 +97,7 @@ public class Kosten implements Serializable {
 	}
 	
 	public KostenArten getKostenArtenObj() throws Exception {
-		/*
+		/**
 		 * throws when foreign key constraint was not found
 		 * */		
 		KostenArtenGateway gw = new KostenArtenGateway();

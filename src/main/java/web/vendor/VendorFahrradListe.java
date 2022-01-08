@@ -1,7 +1,6 @@
 package web.vendor;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -25,17 +24,7 @@ public class VendorFahrradListe extends HttpServlet {
 		Date currentDate = new Date();
 		FahrradGateway gateway = new FahrradGateway();
 
-		//TODO FOR LOOP LÖSCHEN DA WIR ALLE FAHRRÄDER ANZEIGEN WOLLEN!
 		List<Fahrrad> fahrradListe = gateway.getAll();
-		
-//		List<Fahrrad> fahrradListeVerfuegbar = new ArrayList<>();
-//
-//		for (Fahrrad fahrrad : fahrradListe) {
-//			// Fahrräder die schon gemietet sind, werden nicht aufgelistet.
-//
-//				fahrradListeVerfuegbar.add(fahrrad);
-//			
-//		}
 
 		request.setAttribute("fahrradListe", fahrradListe);
 

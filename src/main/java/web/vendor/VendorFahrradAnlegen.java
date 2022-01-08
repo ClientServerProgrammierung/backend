@@ -53,7 +53,7 @@ public class VendorFahrradAnlegen extends HttpServlet {
 	    try {
             artAPreis = kostenArtenGateway.getById(kaufpreisId);
         } catch (Exception e) {
-            System.out.print(e);
+            e.printStackTrace();
             artAPreis = new KostenArten();
             artAPreis.setId(kaufpreisId);
             artAPreis.setBeschreibung("Kauf");
@@ -61,15 +61,14 @@ public class VendorFahrradAnlegen extends HttpServlet {
         }
 	    
 
-	     
-	    // set Anschaffungspreis - //TODO -- kosten art ist momentan als int implementiert - soll das noch geändert werden
+	    // set Anschaffungspreis
 	    aPreis.setHoehe(anschaffungspreis);
 	    aPreis.setKostenArt(artAPreis.getId());
 	    aPreis.setFahrradnummer(rahmennummer);
 	    aPreis.setDatum(new Date());
 	    
 	    
-	    // Neues Fahrrad und Anschaffungskosten in Datenbank einfügen
+	    // Neues Fahrrad und Anschaffungskosten in Datenbank einf�gen
 	    fahrradGateway.insertFahrrad(fahrrad);
 	    kostenGateway.insertKosten(aPreis);	    
 	    

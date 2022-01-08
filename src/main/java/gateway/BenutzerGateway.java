@@ -4,7 +4,6 @@ package gateway;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 
 import java.util.List;
 
@@ -64,7 +63,6 @@ public class BenutzerGateway extends Gateway {
 				System.out.println("user DOES NOT exist.");
 				System.out.println("create user:" + benutzer.getEmail());
 				manager.getTransaction().begin();
-//				manager.persist(hashBenutzerPassword(benutzer));
 				manager.persist(benutzer);
 				manager.getTransaction().commit();
 			}
@@ -83,7 +81,6 @@ public class BenutzerGateway extends Gateway {
             benutzer.setPassword(sha256hex);
 			
 		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return benutzer;

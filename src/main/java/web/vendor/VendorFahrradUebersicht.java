@@ -1,7 +1,6 @@
 package web.vendor;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,12 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Fahrrad;
-import model.Kosten;
-import model.KostenArten;
 
 import gateway.FahrradGateway;
 import gateway.KostenGateway;
-import gateway.KostenArtenGateway;
 
 @WebServlet("/vendoreditbike")
 public class VendorFahrradUebersicht extends HttpServlet {
@@ -42,7 +38,6 @@ public class VendorFahrradUebersicht extends HttpServlet {
 		if (request.getParameter("updateBike") != null) {
 
 			Date date = new Date();
-			KostenGateway kostengateway = new KostenGateway();
 
 			Fahrrad fahrrad = fahrradGateway.getAll().get(0);
 			fahrrad.setMarke(marke);
@@ -61,11 +56,8 @@ public class VendorFahrradUebersicht extends HttpServlet {
 				fahrradGateway.deleteFahrrad(bike);
 			}
 			request.setAttribute("fahrradBearbeitet",
-					"Fahrrad mit Rahmennummer: " + rahmennummer + " wurde gelÃ¶scht!");
-//            RequestDispatcher dispatch = request.getRequestDispatcher("VendorFahrradListe.jsp");
-//            dispatch.forward(request, response);
+					"Fahrrad mit Rahmennummer: " + rahmennummer + " wurde gelöscht!");
 			new VendorFahrradListe().doGet(request, response);
 		}
-//		new VendorFahrradBearbeiten().doGet(request, response);
 	}
 }

@@ -65,9 +65,9 @@
 				</tr>
 				<tr>
 					<td class="td-miet-btn"><button class="miet-btn" type="submit"
-							name="deleteBike">Fahrrad Lï¿½schen</button></td>
+							name="deleteBike">Fahrrad Löschen</button></td>
 					<td class="td-miet-btn"><button class="miet-btn" type="submit"
-							name="updateBike">ï¿½nderung Speichern</button></td>
+							name="updateBike">Änderung Speichern</button></td>
 				</tr>
 			</table>
 		</form>
@@ -106,7 +106,7 @@
 				<tr>
 					<td style="text-align: left;"><%=kostenpunkt.getKostenArtenObj().getBeschreibung()%></td>
 					<td style="text-align: center;"><%=kostenpunkt.getDatum()%></td>
-					<td style="text-align: right; color: red"><%=kostenpunkt.getHoehe() + "&euro;"%></td>
+					<td style="text-align: right; color: red">-<%=kostenpunkt.getHoehe() + "&euro;"%></td>
 				</tr>
 				<%
 				}
