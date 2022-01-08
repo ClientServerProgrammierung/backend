@@ -64,7 +64,8 @@ public class BenutzerGateway extends Gateway {
 				System.out.println("user DOES NOT exist.");
 				System.out.println("create user:" + benutzer.getEmail());
 				manager.getTransaction().begin();
-				manager.persist(hashBenutzerPassword(benutzer));
+//				manager.persist(hashBenutzerPassword(benutzer));
+				manager.persist(benutzer);
 				manager.getTransaction().commit();
 			}
 		} catch (PersistenceException ex) {
