@@ -3,6 +3,8 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.hibernate.internal.build.AllowSysOut;
+
 import gateway.FahrradGateway;
 import gateway.KostenArtenGateway;
 
@@ -101,8 +103,9 @@ public class Kosten implements Serializable {
 	public KostenArten getKostenArtenObj() throws Exception {
 		/*
 		 * throws when foreign key constraint was not found
-		 * */
+		 * */		
 		KostenArtenGateway gw = new KostenArtenGateway();
+		System.out.println(gw.getById(this.getKostenArt()).getBeschreibung());
 		return gw.getById(this.getKostenArt());
 	}
 	

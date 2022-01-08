@@ -19,7 +19,9 @@ public class JsfTest {
 	@SuppressWarnings("deprecation")
 	public static void main (String[] args) {
 		
+
 		
+		/*
 
 //		FahrradGateway gateway = new FahrradGateway();
 //		Fahrrad fahrrad = new Fahrrad();
@@ -59,12 +61,17 @@ public class JsfTest {
 //		gateway.updateBenutzer(benutzer);
 //		List<Benutzer> list =gateway.getAllBenutzer();
 //		list.forEach(ff -> System.out.println(ff.getVorname()));
+<<<<<<< HEAD
 		
 */
 		
 		FahrradGateway gw = new FahrradGateway();
 		gw.deleteFahrrad(gw.getAll().get(0));
      
+=======
+ 
+ */
+>>>>>>> devVendor
 	}
 	
 }

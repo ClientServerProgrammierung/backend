@@ -26,13 +26,14 @@ alter table kosten add column dauer int;
 
 INSERT INTO fahrrad VALUES ('43UA502', 'Pegasus', 'Krasses Model');
 
+alter table kosten_arten add column isIncome boolean;
 
-alter table benutzer add column password String;
 
-insert into kosten_arten (beschreibung) values ('Kauf');
+insert into kosten_arten (beschreibung, isIncome) values ('Kauf', false);
 
-insert into kosten_arten (beschreibung) values ('Wartung');
+insert into kosten_arten (beschreibung, isIncome) values ('Wartung', false);
 
-insert into kosten_arten (beschreibung) values ('Miete');
+insert into kosten_arten (beschreibung, isIncome) values ('Miete', true);
 
-insert into kosten_arten (beschreibung) values ('Verkauf');
+insert into kosten_arten (beschreibung, isIncome) values ('Verkauf', true);
+

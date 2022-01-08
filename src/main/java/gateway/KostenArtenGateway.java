@@ -9,14 +9,14 @@ public class KostenArtenGateway extends Gateway {
 
 
 	public List<KostenArten> getAll() {
-		TypedQuery<KostenArten> query = manager.createQuery("SELECT k FROM kosten_arten k", KostenArten.class);
+		TypedQuery<KostenArten> query = manager.createQuery("SELECT k FROM KostenArten k", KostenArten.class);
 		
 		List<KostenArten> liste = query.getResultList();
 		return liste;
 	}
 	
 	public KostenArten getById(Integer id) throws Exception {
-		TypedQuery<KostenArten> query = manager.createQuery("SELECT k FROM kosten_arten k WHERE k.id= ?1", KostenArten.class);
+		TypedQuery<KostenArten> query = manager.createQuery("SELECT k FROM KostenArten k WHERE k.id= ?1", KostenArten.class);
 		query.setParameter(1, id);
 		
 		return query.getResultList().stream()
